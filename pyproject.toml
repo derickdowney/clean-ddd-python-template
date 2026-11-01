@@ -1,0 +1,27 @@
+[project]
+authors = [{name = "Derick Downey", email = "126332037+derickdowney@users.noreply.github.com"}]
+dependencies = []
+name = "my-package"
+requires-python = ">= 3.11"
+version = "0.1.0"
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+my_package = { path = ".", editable = true }
+
+[tool.pixi.tasks]
+t = "clear && pytest"
+
+[tool.pixi.dependencies]
+pytest = ">=9.2.0,<10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
