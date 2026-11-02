@@ -17,7 +17,7 @@ platforms = ["osx-arm64"]
 my_package = { path = ".", editable = true }
 
 [tool.pixi.tasks]
-t = "clear && pytest"
+test = "clear && pytest"
 
 [tool.pixi.dependencies]
 pytest = ">=9.2.0,<10"

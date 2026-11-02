@@ -152,6 +152,18 @@ endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
 nohlsearch
+" Navigate to bottom-left terminal, start pixi shell, then go back up
+wincmd t
+wincmd h
+wincmd j
+
+if &buftype ==# 'terminal'
+    startinsert
+    call chansend(b:terminal_job_id, "pixi shell\n")
+    stopinsert
+endif
+
+wincmd k
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
